@@ -5,7 +5,7 @@ yes_no() {
   while true; do
       read -p "${message}" yn
       case $yn in
-          [Yy]* ) make install; break;;
+          [Yy]* ) func_name; break;;
           [Nn]* ) exit;;
           * ) echo "Please answer yes or no.";;
       esac
