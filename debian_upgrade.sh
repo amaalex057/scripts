@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export DEBIAN_FRONTEND=noninteractive
+
 echo "Upgrading Debian"
 
 read -p "Upgrade From [bullseye]: " source
@@ -10,5 +12,5 @@ dest=${dest:-bookworm}
 
 apt update && apt upgrade -y && apt autoremove -y
 sed -ibak -e "s/${source}/${dest}/g" /etc/apt/sources.list 
-apt update && apt upgrade -y && apt autoremove -y
+apt update &&  apt upgrade -y && apt autoremove -y
 apt full-upgrade -y
