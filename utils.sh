@@ -39,3 +39,11 @@ confirm() {
     esac
   done
 }
+
+get_latest_tag() {
+  local BASE="https://github.com/$1"
+  local effective_url
+
+  effective_url=$(curl -fsSL -o /dev/null -w '%{url_effective}' "${BASE}/releases/latest") || return
+  printf '%s\n' "${effective_url##*/}"
+}
