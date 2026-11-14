@@ -41,7 +41,7 @@ install_zellij() {
   latest_tag=$(get_latest_tag "${org}/${project}")
   echo "Found version: ${latest_tag}"
 
-  local tmp_dir
+  # The EXIT trap runs after this function returns, so keep its path in global scope.
   tmp_dir=$(mktemp -d)
   trap 'rm -rf "$tmp_dir"' EXIT
 
